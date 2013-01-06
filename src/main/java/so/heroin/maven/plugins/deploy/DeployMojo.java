@@ -19,7 +19,11 @@
 
 package so.heroin.maven.plugins.deploy;
 
+import ch.ethz.ssh2.Connection;
+import ch.ethz.ssh2.SCPClient;
 import org.apache.maven.plugin.MojoExecutionException;
+
+import java.io.IOException;
 
 /**
  *
@@ -30,8 +34,30 @@ import org.apache.maven.plugin.MojoExecutionException;
 public class DeployMojo extends AbstractDeployMojo {
 
     public void execute() throws MojoExecutionException {
-        getLog().info(outputFile.toString());
-        getLog().info(outputDirectory.toString());
-        getLog().info(username);
+        if (null != outputFile) {
+            if (checkConfig()) {
+                Connection connection = new Connection(hostname, port);
+                try {
+                    connection.connect();
+                    boolean isAuth = connection.authenticateWithPassword(username, password);
+                    getLog().info("auth hostname: " + hostname + " username: " + username + " password: " + password);
+                    if (isAuth) {
+                        SCPClient scp = connection.createSCPClient();
+                        scp.put(outputFile.getAbsolutePath(), remotePath);
+                        connection.close();
+                        getLog().info("UPLOAD SUCCESSFUL");
+                    } else {
+                        getLog().error("auth error, hostname: " + hostname);
+                        getLog().error("UPLOAD ERROR");
+                    }
+                } catch (IOException e) {
+                    getLog().error("connection to server error, hostname: " + hostname + ", " + e);
+                    getLog().error("UPLOAD ERROR");
+                }
+            }
+        } else {
+            getLog().error("not found build file.");
+            getLog().error("UPLOAD ERROR");
+        }
     }
 }
