@@ -10,7 +10,7 @@
     <packaging>maven-plugin</packaging>
     <name>deploy-maven-plugin</name>
     <description>
-        maven deploy to linux plugin
+        maven deploy build file to linux plugin
     </description>
 
     <licenses>
