@@ -31,6 +31,11 @@ import java.io.File;
  */
 public class DeployMojo extends AbstractDeployMojo {
 
+    /**
+     * Location of the file.
+     *
+     * @parameter expression="${project.build.directory}"
+     */
     private File outputDirectory;
 
     public void execute() throws MojoExecutionException {
