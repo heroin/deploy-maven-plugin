@@ -38,9 +38,15 @@ public class DeployMojo extends AbstractDeployMojo {
      */
     private File outputDirectory;
 
+    /**
+     * The location of the war file.
+     * @parameter expression="${project.build.directory}/${project.build.finalName}.${project.packaging}"
+     */
+    private File outputFile;
+
+
     public void execute() throws MojoExecutionException {
-        getLog().info(outputDirectory.getAbsolutePath());
-        getLog().info(outputDirectory.getPath());
+        getLog().info(outputFile.toString());
         getLog().info(outputDirectory.toString());
     }
 }
