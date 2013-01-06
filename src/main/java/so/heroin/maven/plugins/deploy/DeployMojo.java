@@ -21,8 +21,6 @@ package so.heroin.maven.plugins.deploy;
 
 import org.apache.maven.plugin.MojoExecutionException;
 
-import java.io.File;
-
 /**
  *
  * @goal upload
@@ -31,22 +29,9 @@ import java.io.File;
  */
 public class DeployMojo extends AbstractDeployMojo {
 
-    /**
-     * Location of the file.
-     *
-     * @parameter expression="${project.build.directory}"
-     */
-    private File outputDirectory;
-
-    /**
-     * The location of the war file.
-     * @parameter expression="${project.build.directory}/${project.build.finalName}.${project.packaging}"
-     */
-    private File outputFile;
-
-
     public void execute() throws MojoExecutionException {
         getLog().info(outputFile.toString());
         getLog().info(outputDirectory.toString());
+        getLog().info(username);
     }
 }

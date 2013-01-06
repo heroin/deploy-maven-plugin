@@ -25,11 +25,43 @@ import java.io.File;
 
 public abstract class AbstractDeployMojo extends AbstractMojo {
 
+    /**
+     * @parameter
+     */
     protected String path;
+
+    /**
+     * @parameter
+     */
     protected String username;
+
+    /**
+     * @parameter
+     */
     protected String password;
+
+    /**
+     * @parameter
+     */
     protected String ip;
+
+    /**
+     * @parameter
+     */
     protected File cert;
+
+    /**
+     * Location of the file.
+     *
+     * @parameter expression="${project.build.directory}"
+     */
+    protected File outputDirectory;
+
+    /**
+     * The location of the war file.
+     * @parameter expression="${project.build.directory}/${project.build.finalName}.${project.packaging}"
+     */
+    protected File outputFile;
 
     public String getPath() {
         return path;
@@ -69,5 +101,21 @@ public abstract class AbstractDeployMojo extends AbstractMojo {
 
     public void setCert(File cert) {
         this.cert = cert;
+    }
+
+    public File getOutputDirectory() {
+        return outputDirectory;
+    }
+
+    public void setOutputDirectory(File outputDirectory) {
+        this.outputDirectory = outputDirectory;
+    }
+
+    public File getOutputFile() {
+        return outputFile;
+    }
+
+    public void setOutputFile(File outputFile) {
+        this.outputFile = outputFile;
     }
 }
