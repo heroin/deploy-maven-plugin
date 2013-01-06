@@ -8,6 +8,10 @@
     <artifactId>deploy-maven-plugin</artifactId>
     <version>1.0.0.0-SNAPSHOT</version>
     <packaging>maven-plugin</packaging>
+    <name>deploy-maven-plugin</name>
+    <description>
+        maven deploy to linux plugin
+    </description>
 
     <licenses>
         <license>
