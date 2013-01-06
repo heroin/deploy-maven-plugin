@@ -19,8 +19,16 @@
     <scm>
         <connection>scm:git:https://github.com/heroin/deploy-maven-plugin.git</connection>
         <developerConnection>scm:git:https://github.com/heroin/deploy-maven-plugin.git</developerConnection>
-        <url>https://github.com/heroin/deploy-maven-plugin</url>
+        <url>https://github.com/heroin/deploy-maven-plugin.git</url>
     </scm>
+
+    <developers>
+        <developer>
+            <id>heroin</id>
+            <name>Heroin</name>
+            <email>heroin.nee@gmail.com</email>
+        </developer>
+    </developers>
 
     <dependencies>
         <dependency>
